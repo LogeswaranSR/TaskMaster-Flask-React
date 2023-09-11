@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import APIService from "./APIService"
 
-function Form(props) {
+function UpdateForm(props) {
 
   const [content, setContent] = useState(null);
 
@@ -34,4 +34,4 @@ function Form(props) {
   )
 }
 
-export default Form
+export default UpdateForm

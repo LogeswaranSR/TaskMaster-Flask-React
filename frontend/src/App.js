@@ -1,7 +1,7 @@
 import './App.css';
 import {useState, useEffect} from "react";
 import TaskList from "./components/TaskList"
-import Form from "./components/Form";
+import UpdateForm from "./components/UpdateForm";
 
 function App() {
 
@@ -40,7 +40,7 @@ function App() {
     <div className="App">
       <h1>TaskMaster Sample Website</h1>
       <TaskList tasks={tasks} editTask = {editTask}/>
-      {editedTask ? <Form task={editedTask} updateData={updateData}/> : null}
+      {editedTask ? <UpdateForm task={editedTask} updateData={updateData}/> : null}
     </div>
   );
 }
