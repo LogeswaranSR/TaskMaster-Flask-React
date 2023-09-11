@@ -24,11 +24,23 @@ function App() {
     seteditedTask(task);
   }
 
+  const updateData = (task) => {
+    const new_task = tasks.map(oldtask => {
+      if(oldtask.id === task.id){
+        return task
+      } else {
+        return oldtask
+      }
+    })
+    setTasks(new_task)
+    seteditedTask(null);
+  }
+
   return (
     <div className="App">
       <h1>TaskMaster Sample Website</h1>
       <TaskList tasks={tasks} editTask = {editTask}/>
-      <Form task={editedTask}/>
+      {editedTask ? <Form task={editedTask} updateData={updateData}/> : null}
     </div>
   );
 }
