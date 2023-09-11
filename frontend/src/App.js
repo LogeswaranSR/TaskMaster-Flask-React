@@ -1,7 +1,7 @@
 import './App.css';
 import {useState, useEffect} from "react";
 import TaskList from "./components/TaskList"
-import UpdateForm from "./components/UpdateForm";
+import Form from "./components/Form";
 
 function App() {
 
@@ -38,9 +38,17 @@ function App() {
 
   return (
     <div className="App">
-      <h1>TaskMaster Sample Website</h1>
+      <div className='row'>
+        <div className='col'>
+          <h1>TaskMaster Sample Website</h1>
+        </div>
+        <div className='col'>
+          <button className='btn btn-success'
+          >Add Task</button>
+        </div>
+      </div>
       <TaskList tasks={tasks} editTask = {editTask}/>
-      {editedTask ? <UpdateForm task={editedTask} updateData={updateData}/> : null}
+      {editedTask ? <Form task={editedTask} updateData={updateData}/> : null}
     </div>
   );
 }
