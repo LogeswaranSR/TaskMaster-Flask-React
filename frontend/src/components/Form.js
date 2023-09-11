@@ -1,11 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-function form(props) {
+function Form(props) {
+
+  const [task, setTask] = useState(props.task ? props.task.content : null);
+
   return (
     <div>
-        {props.task.id}
+        {props.task ? (
+          <div className = "mb-3">
+              <label htmlForm = "title" className='form-label' value={task} >Task</label>
+              <input type='text' className="form-control" placeholder = "Please Enter Task"/>
+          </div>
+        ) : null
+        }
     </div>
   )
 }
 
-export default form
+export default Form
