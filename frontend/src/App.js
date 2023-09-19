@@ -36,6 +36,27 @@ function App() {
     seteditedTask(null);
   }
 
+  const openForm= () => {
+    seteditedTask({content:''})
+  }
+
+  const insertData = (task) => {
+    const new_tasks = [...tasks, task]
+    setTasks(new_tasks)
+    seteditedTask(null)
+  }
+
+  const deleteData = (task) => {
+    const new_task = tasks.filter(oldtask => {
+      if (oldtask.id === task.id){
+        return false
+      } else {
+        return true
+      }
+    })
+    setTasks(new_task)
+  }
+
   return (
     <div className="App">
       <div className='row'>
@@ -44,11 +65,12 @@ function App() {
         </div>
         <div className='col'>
           <button className='btn btn-success'
+          onClick={openForm}
           >Add Task</button>
         </div>
       </div>
-      <TaskList tasks={tasks} editTask = {editTask}/>
-      {editedTask ? <Form task={editedTask} updateData={updateData}/> : null}
+      <TaskList tasks={tasks} editTask = {editTask} deleteData={deleteData}/>
+      {editedTask ? <Form task={editedTask} updateData={updateData} insertData={insertData}/> : null}
     </div>
   );
 }

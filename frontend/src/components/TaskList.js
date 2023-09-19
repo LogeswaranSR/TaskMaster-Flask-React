@@ -1,4 +1,5 @@
 import React from 'react'
+import APIService from "./APIService"
 
 function TaskList(props) {
 
@@ -6,9 +7,15 @@ function TaskList(props) {
     props.editTask(task)
   }
 
+  const deleteTask = (task) => {
+    APIService.DeleteTask(task.id)
+    .then(() => props.deleteData(task))
+    .catch((err) => console.log(err))
+  }
+
   return (
     <div key="tasks">
-      <table>
+      <table class="table table-dark table-bordered w-auto">
         <thead>
             <tr>
                 <th>ID</th>
@@ -27,7 +34,8 @@ function TaskList(props) {
                 <td>
                   <button className='btn btn-primary'
                   onClick={() => editTask(task)}>Update</button>
-                  <button className='btn btn-danger'>Delete</button>
+                  <button className='btn btn-danger'
+                  onClick={() => deleteTask(task)}>Delete</button>
                 </td>
             </tr>
             )
